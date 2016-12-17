@@ -1,1 +1,5 @@
-strutshelloworld\net\ren\struts2\actions\Login.class
+strutshelloworld\net\ren\struts2\domain\Student.class
+strutshelloworld\net\ren\struts2\service\impl\StudentServiceImpl.class
+strutshelloworld\net\ren\struts2\service\StudentService.class
+strutshelloworld\net\ren\struts2\actions\StudentAction.class
+strutshelloworld\net\ren\struts2\actions\LoginAction.class

@@ -7,5 +7,9 @@
 
 <body>
 	<h2>Howdy, <s:property value="username" />...!</h2>
+	
+	<h2>
+  FirstName : <s:property value="firstName"/>
+</h2>
 </body>
 </html>

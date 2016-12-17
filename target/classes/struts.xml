@@ -4,21 +4,35 @@
         "http://struts.apache.org/dtds/struts-2.5.dtd">
 <struts>
 	<constant name="struts.enable.DynamicMethodInvocation" value="false" />
-	<constant name="struts.devMode" value="true" />
-<!-- <constant name="struts.action.extension" value="html" / -->
+	<constant name="struts.devMode" value="false" />
 	<constant name="struts.custom.i18n.resources" value="app-resources" />
-	
-	
+
 	<package name="default" namespace="/" extends="struts-default">
 
-		<default-action-ref name="login" />
-		<action name="login" class="strutshelloworld.net.ren.struts2.actions.Login">
+		<action name="displayAddStudent"
+			class="strutshelloworld.net.ren.struts2.actions.StudentAction"
+			method="execute">
+			<result name="success">/WEB-INF/jsp/AddStudent.jsp</result>
+		</action>
+
+		<action name="addingStudent"
+			class="strutshelloworld.net.ren.struts2.actions.StudentAction"
+			method="addStudent">
+			<result name="success" type="redirect">listStudent</result>
+		</action>
+
+		<action name="listStudent"
+			class="strutshelloworld.net.ren.struts2.actions.StudentAction"
+			method="getAllStudent">
+			<result name="success">/WEB-INF/jsp/ListStudent.jsp</result>
+		</action>
+
+		<action name="login"
+			class="strutshelloworld.net.ren.struts2.actions.LoginAction">
 			<result name="success">/WEB-INF/jsp/Welcome.jsp</result>
 			<result name="error">/WEB-INF/jsp/Login.jsp</result>
 			<result name="input">/WEB-INF/jsp/Login.jsp</result>
 		</action>
-
 	</package>
-
 
 </struts>
