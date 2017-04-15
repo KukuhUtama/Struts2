@@ -1,18 +1,31 @@
 package strutshelloworld.net.ren.struts2.domain;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
 // TODO: Auto-generated Javadoc
 /**
  * The Class Student.
  */
+@Entity
+@Table(name="student")
 public class Student {
     
     /** The id. */
+	@Id
+	@GeneratedValue
+	@Column(name="id")
     private int id;
     
     /** The first name. */
+	@Column(name="first_name")
     private String firstName;
     
     /** The last name. */
+	@Column(name="last_name")
     private String lastName;
     
     /**

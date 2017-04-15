@@ -23,15 +23,15 @@
 				<td><c:out value="${student.firstName}"/></td>
 				<td><c:out value="${student.lastName}"/></td>
 				<td>
-                <s:url id="editURL" action="editUser">
+             <%--    <s:url id="editURL" action="editUser">
 					<s:param name="id" value="%{id}"></s:param>
-				</s:url>
+				</s:url> --%>
                 <s:a href="%{editURL}">Edit</s:a>
                 </td>
 				<td>
-                <s:url id="deleteURL" action="deleteUser">
+             <%--    <s:url id="deleteURL" action="deleteUser">
 					<s:param name="id" value="%{id}"></s:param>
-				</s:url>
+				</s:url> --%>
                 <s:a href="%{deleteURL}">Delete</s:a>
                 </td>
 			</tr>

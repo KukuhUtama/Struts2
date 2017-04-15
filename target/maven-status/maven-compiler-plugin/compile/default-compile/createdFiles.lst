@@ -1,5 +1,9 @@
-strutshelloworld\net\ren\struts2\domain\Student.class
-strutshelloworld\net\ren\struts2\service\impl\StudentServiceImpl.class
-strutshelloworld\net\ren\struts2\service\StudentService.class
-strutshelloworld\net\ren\struts2\actions\StudentAction.class
+strutshelloworld\net\ren\struts2\repository\BaseRepository.class
+strutshelloworld\net\ren\struts2\repository\impl\StudentRepositoryImpl.class
 strutshelloworld\net\ren\struts2\actions\LoginAction.class
+strutshelloworld\net\ren\struts2\service\impl\StudentServiceImpl.class
+strutshelloworld\net\ren\struts2\domain\Student.class
+strutshelloworld\net\ren\struts2\repository\AbstractBaseRepository.class
+strutshelloworld\net\ren\struts2\actions\StudentAction.class
+strutshelloworld\net\ren\struts2\repository\StudentRepository.class
+strutshelloworld\net\ren\struts2\service\StudentService.class
