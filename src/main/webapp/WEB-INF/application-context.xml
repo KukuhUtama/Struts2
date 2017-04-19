@@ -13,7 +13,8 @@
 	<context:property-placeholder location="classpath:hibernate.properties" />
 	
     <context:annotation-config/>
-    <context:component-scan base-package="strutshelloworld.net.ren.struts2.*"></context:component-scan>
+    
+    <context:component-scan base-package="strutshelloworld.net.ren.struts2"></context:component-scan>
     
 	<bean id="dataSource"
 		class="org.springframework.jdbc.datasource.DriverManagerDataSource">
@@ -24,7 +25,7 @@
 	</bean>
 
 	<bean id="sessionFactory"
-		class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
+		class="org.springframework.orm.hibernate5.LocalSessionFactoryBean">
 		<property name="dataSource" ref="dataSource" />
 		<property name="packagesToScan" value="strutshelloworld.net.ren.struts2.domain" />
 		<property name="hibernateProperties">
@@ -37,11 +38,13 @@
 	</bean>
 
 	<bean id="transactionManager"
-		class="org.springframework.orm.hibernate4.HibernateTransactionManager">
+		class="org.springframework.orm.hibernate5.HibernateTransactionManager">
 		<property name="sessionFactory" ref="sessionFactory" />
 	</bean>
 
 	<bean id="persistenceExceptionTranslationPostProcessor"
 		class="org.springframework.dao.annotation.PersistenceExceptionTranslationPostProcessor" />
+		
+	<tx:annotation-driven transaction-manager="transactionManager" />
 
 </beans>

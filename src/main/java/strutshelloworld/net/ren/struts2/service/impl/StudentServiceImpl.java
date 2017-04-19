@@ -2,6 +2,8 @@ package strutshelloworld.net.ren.struts2.service.impl;
 
 import java.util.List;
 
+import javax.transaction.Transactional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -9,12 +11,15 @@ import strutshelloworld.net.ren.struts2.domain.Student;
 import strutshelloworld.net.ren.struts2.repository.StudentRepository;
 import strutshelloworld.net.ren.struts2.service.StudentService;
 
+// TODO: Auto-generated Javadoc
 /**
  * The Class StudentServiceImpl.
  */
 @Service
+@Transactional
 public class StudentServiceImpl implements StudentService {
 
+	/** The student repository. */
 	@Autowired
 	private StudentRepository studentRepository;
 

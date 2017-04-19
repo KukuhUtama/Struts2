@@ -23,7 +23,7 @@
 		<action name="addingStudent"
 			class="strutshelloworld.net.ren.struts2.actions.StudentAction"
 			method="addStudent">
-			<result name="success" type="redirect">listStudent</result>
+			<result name="success" type="redirect">listStudent.html</result>
 		</action>
 
 		<action name="listStudent"

@@ -10,7 +10,7 @@
 <body>
 <h1>Struts 2 ModelDriven example</h1>
 <h2>Add Student</h2>
-<s:form action="addingStudent.action" >
+<s:form action="addingStudent">
   <s:textfield name="id" key="label.id" />
   <s:textfield name="firstName" key="label.fname"/>
   <s:textfield name="lastName" key="label.lname"/>

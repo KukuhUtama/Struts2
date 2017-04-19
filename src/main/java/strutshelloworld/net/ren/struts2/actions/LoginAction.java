@@ -2,7 +2,6 @@ package strutshelloworld.net.ren.struts2.actions;
 
 import com.opensymphony.xwork2.ActionSupport;
 
-// TODO: Auto-generated Javadoc
 /**
  * The Class LoginAction.
  */

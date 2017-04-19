@@ -47,7 +47,7 @@ public class StudentAction extends ActionSupport implements ModelDriven, Prepara
 	 * @see com.opensymphony.xwork2.Preparable#prepare()
 	 */
 	public void prepare() throws Exception {
-		studentService = new StudentServiceImpl();
+		
 	}
 
 	/*
