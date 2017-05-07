@@ -74,6 +74,16 @@ public class StudentAction extends ActionSupport implements ModelDriven, Prepara
 		studentService.addStudent(student);
 		return SUCCESS;
 	}
+	
+	/**
+	 * Update student.
+	 *
+	 * @return the string
+	 */
+	public String updateStudent() {
+		studentService.addStudent(student);
+		return SUCCESS;
+	}
 
 	/**
 	 * Delete student.

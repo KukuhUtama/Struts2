@@ -28,7 +28,7 @@
 			<s:submit key="label.submit" align="center"/>
 		</s:if>
 		<s:else>
-			<s:submit key="label.update" align="center"/>
+			<s:submit key="label.update" align="center" action="updateStudent"/>
 		</s:else>
 	</s:form>
 	

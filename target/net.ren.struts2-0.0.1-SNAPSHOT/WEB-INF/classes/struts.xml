@@ -3,7 +3,7 @@
         "-//Apache Software Foundation//DTD Struts Configuration 2.5//EN"
         "http://struts.apache.org/dtds/struts-2.5.dtd">
 <struts>
-	<constant name="struts.enable.DynamicMethodInvocation" value="true" />
+	<constant name="struts.enable.DynamicMethodInvocation" value="false" />
 	<constant name="struts.devMode" value="false" />
 	<constant name="struts.custom.i18n.resources" value="app-resources" />
 	<constant name="struts.action.extension" value="html" />
@@ -24,6 +24,12 @@
 		<action name="addStudent"
 			class="strutshelloworld.net.ren.struts2.actions.StudentAction"
 			method="addStudent">
+			<result name="success" type="redirect">listStudent.html</result>
+		</action>
+		
+		<action name="updateStudent"
+			class="strutshelloworld.net.ren.struts2.actions.StudentAction"
+			method="updateStudent">
 			<result name="success" type="redirect">listStudent.html</result>
 		</action>
 		
