@@ -41,4 +41,16 @@ public interface StudentService {
 	 * @return the list
 	 */
 	public List<Student> findAll();
+	
+	/**
+	 * Delete all.
+	 */
+	public void deleteAll();
+	
+	/**
+	 * Delete.
+	 *
+	 * @param entity the entity
+	 */
+	public void delete(Student entity);
 }

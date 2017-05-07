@@ -63,4 +63,18 @@ public class StudentServiceImpl implements StudentService {
 	public List<Student> findAll() {
 		return studentRepository.getAll();
 	}
+
+	/* (non-Javadoc)
+	 * @see strutshelloworld.net.ren.struts2.service.StudentService#deleteAll()
+	 */
+	public void deleteAll() {
+		studentRepository.deleteAll();
+	}
+
+	/* (non-Javadoc)
+	 * @see strutshelloworld.net.ren.struts2.service.StudentService#delete(strutshelloworld.net.ren.struts2.domain.Student)
+	 */
+	public void delete(Student entity) {
+		studentRepository.delete(entity);
+	}
 }

@@ -38,5 +38,17 @@ public interface BaseRepository<T> {
 	 * @return the all
 	 */
 	public  List<T> getAll();
+	
+	/**
+	 * Delete all.
+	 */
+	public void deleteAll();
+	
+	/**
+	 * Delete.
+	 *
+	 * @param entity the entity
+	 */
+	public void delete(T entity);
 
 }

@@ -9,7 +9,7 @@
 <title>List of Student</title>
 </head>
 <body>
-<table cellpadding="5px">
+     <table cellpadding="5px">
 		<tr class="even">
 			<th>Id</th>
 			<th>Fist Name</th>
@@ -17,25 +17,27 @@
 			<th>Edit </th>
 			<th>Delete </th>
 		</tr>
-<c:forEach items="${listStudent}" var="student">
+        <c:forEach items="${listStudent}" var="student">
 			<tr>
 				<td><c:out value="${student.id}"/></td>
 				<td><c:out value="${student.firstName}"/></td>
 				<td><c:out value="${student.lastName}"/></td>
-				<td>
-             <%--    <s:url id="editURL" action="editUser">
-					<s:param name="id" value="%{id}"></s:param>
-				</s:url> --%>
-                <s:a href="%{editURL}">Edit</s:a>
+		    	<td>
+               <s:url var="updateUrl" action="getStudentById">
+					<s:param name="id">${student.id}</s:param>
+				</s:url> 
+				<s:a href="%{updateUrl}">Update</s:a>
                 </td>
 				<td>
-             <%--    <s:url id="deleteURL" action="deleteUser">
-					<s:param name="id" value="%{id}"></s:param>
-				</s:url> --%>
-                <s:a href="%{deleteURL}">Delete</s:a>
-                </td>
+                <s:url var="deleteUrl" action="deleteStudent">
+					<s:param name="id">${student.id}</s:param>
+				</s:url> 
+                <s:a href="%{deleteUrl}">Delete</s:a>
+                </td> 
 			</tr>
 		</c:forEach> 
 	</table>
+	<s:url var="deleteAllUrl" action="deleteAll"/>
+	<s:a href="%{deleteAllUrl}">Delete All</s:a>
 </body>
 </html>

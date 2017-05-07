@@ -3,15 +3,18 @@ package strutshelloworld.net.ren.struts2.actions;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+
+import org.apache.struts2.ServletActionContext;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.ModelDriven;
 import com.opensymphony.xwork2.Preparable;
 
 import strutshelloworld.net.ren.struts2.domain.Student;
 import strutshelloworld.net.ren.struts2.service.StudentService;
-import strutshelloworld.net.ren.struts2.service.impl.StudentServiceImpl;
 
 // TODO: Auto-generated Javadoc
 /**
@@ -31,6 +34,9 @@ public class StudentAction extends ActionSupport implements ModelDriven, Prepara
 
 	/** The student. */
 	private Student student = new Student();
+	
+	/** The request. */
+	private HttpServletRequest request;
 
 	/*
 	 * (non-Javadoc)
@@ -56,7 +62,6 @@ public class StudentAction extends ActionSupport implements ModelDriven, Prepara
 	 * @see com.opensymphony.xwork2.ActionSupport#execute()
 	 */
 	public String execute() throws Exception {
-
 		return SUCCESS;
 	}
 
@@ -76,7 +81,8 @@ public class StudentAction extends ActionSupport implements ModelDriven, Prepara
 	 * @return the string
 	 */
 	public String deleteStudent() {
-		studentService.addStudent(student);
+        request = (HttpServletRequest) ActionContext.getContext().get( ServletActionContext.HTTP_REQUEST);
+		studentService.deleteStudentById((Integer.parseInt(request. getParameter("id"))));
 		return SUCCESS;
 	}
 
@@ -90,6 +96,27 @@ public class StudentAction extends ActionSupport implements ModelDriven, Prepara
 		return SUCCESS;
 	}
 
+	/**
+	 * Update student.
+	 *
+	 * @return the string
+	 */
+	public String getStudentById(){
+		request = (HttpServletRequest) ActionContext.getContext().get( ServletActionContext.HTTP_REQUEST);
+		student = studentService.findStudentById(Integer.parseInt(request. getParameter("id")));
+		return SUCCESS;
+	}
+	
+	/**
+	 * Delete all.
+	 *
+	 * @return the string
+	 */
+	public String deleteAll(){
+		studentService.deleteAll();
+		return SUCCESS;
+	}
+	
 	/**
 	 * Gets the list student.
 	 *
