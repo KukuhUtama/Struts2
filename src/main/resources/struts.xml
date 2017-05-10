@@ -3,11 +3,11 @@
         "-//Apache Software Foundation//DTD Struts Configuration 2.5//EN"
         "http://struts.apache.org/dtds/struts-2.5.dtd">
 <struts>
-	<constant name="struts.enable.DynamicMethodInvocation" value="false" />
+	<constant name="struts.enable.DynamicMethodInvocation" value="true" />
 	<constant name="struts.devMode" value="false" />
 	<constant name="struts.custom.i18n.resources" value="app-resources" />
 	<constant name="struts.action.extension" value="html" />
-    <constant name="struts.mapper.action.prefix.enabled" value="true"/>
+<!--     <constant name="struts.mapper.action.prefix.enabled" value="true"/> -->
 
 	<package name="default" namespace="/" extends="struts-default">
 
@@ -55,6 +55,14 @@
 			class="strutshelloworld.net.ren.struts2.actions.StudentAction"
 			method="getAllStudent">
 			<result name="success">/WEB-INF/jsp/ListStudent.jsp</result>
+		</action>
+		
+		<action name="listBook" class="strutshelloworld.net.ren.struts2.actions.BookAction" method="execute">
+		      <result name="success">/WEB-INF/jsp/ListBook.jsp</result>
+		</action>
+		
+		<action name="*Book" method="{1}" class="strutshelloworld.net.ren.struts2.actions.BookAction">
+		      <result name="success">/WEB-INF/jsp/{1}Book.jsp</result>
 		</action>
 		
 		<action name="login"
