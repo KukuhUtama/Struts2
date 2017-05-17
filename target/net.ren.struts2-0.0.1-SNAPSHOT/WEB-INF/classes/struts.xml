@@ -10,7 +10,17 @@
     <constant name="struts.mapper.action.prefix.enabled" value="true"/>
  
 	<package name="default" namespace="/"  strict-method-invocation="false" extends="struts-default">
-
+        <interceptors>
+               <interceptor name="authentication" class="">
+               </interceptor>
+               <interceptor-stack name="authStack">
+                     <interceptor-ref name="authentication"/>
+                     <interceptor-ref name="defaultStack"/>
+               </interceptor-stack>
+        </interceptors>
+        
+        <default-interceptor-ref name="authStack"></default-interceptor-ref>
+        
 		<action name="index">
 			<result type="redirect">/login.html</result>
 		</action>
