@@ -10,7 +10,7 @@
     <constant name="struts.mapper.action.prefix.enabled" value="true"/>
  
 	<package name="default" namespace="/"  strict-method-invocation="false" extends="struts-default">
-        <interceptors>
+ <!--        <interceptors>
                <interceptor name="authentication" class="">
                </interceptor>
                <interceptor-stack name="authStack">
@@ -19,7 +19,7 @@
                </interceptor-stack>
         </interceptors>
         
-        <default-interceptor-ref name="authStack"></default-interceptor-ref>
+        <default-interceptor-ref name="authStack"></default-interceptor-ref> -->
         
 		<action name="index">
 			<result type="redirect">/login.html</result>
@@ -75,12 +75,37 @@
 		      <result name="success">/WEB-INF/jsp/Book.jsp</result>
 		</action>
 		
-		<action name="login"
+	<!-- 	<action name="login"
 			class="strutshelloworld.net.ren.struts2.actions.LoginAction">
 			<result name="success">/WEB-INF/jsp/Welcome.jsp</result>
 			<result name="error">/WEB-INF/jsp/Login.jsp</result>
 			<result name="input">/WEB-INF/jsp/Login.jsp</result>
-		</action>
+		</action> -->
+		
+		 <action name="home"
+			class="strutshelloworld.net.ren.struts2.actions.UserAction" method="LogIn">
+			<result name="success">/WEB-INF/jsp/Welcome.jsp</result>
+			<result name="error">/WEB-INF/jsp/Login.jsp</result>
+			<result name="input">/WEB-INF/jsp/Login.jsp</result>
+	   </action> 
+       <action name="login"
+			class="strutshelloworld.net.ren.struts2.actions.UserAction" method="LogIn">
+			<result name="success">/WEB-INF/jsp/Welcome.jsp</result>
+			<result name="error">/WEB-INF/jsp/Login.jsp</result>
+			<result name="input">/WEB-INF/jsp/Login.jsp</result>
+	   </action> 
+	   
+	    <action name="showSignup"
+			class="strutshelloworld.net.ren.struts2.actions.UserAction" method="execute">
+			<result name="input">/WEB-INF/jsp/Login.jsp</result>
+	   </action>
+	   
+	    <action name="signup"
+			class="strutshelloworld.net.ren.struts2.actions.UserAction" method="SignUp">
+			<result name="success">/WEB-INF/jsp/Welcome.jsp</result>
+			<result name="error">/WEB-INF/jsp/Login.jsp</result>
+	   </action> 
+	   
 	</package>
 
 </struts>

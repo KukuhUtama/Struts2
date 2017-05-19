@@ -1,6 +1,9 @@
 package strutshelloworld.net.ren.struts2.service.impl;
 
+import javax.transaction.Transactional;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import strutshelloworld.net.ren.struts2.domain.User;
 import strutshelloworld.net.ren.struts2.repository.UserRepository;
@@ -10,6 +13,8 @@ import strutshelloworld.net.ren.struts2.service.UserService;
 /**
  * The Class UserServiceImpl.
  */
+@Service
+@Transactional
 public class UserServiceImpl implements UserService {
 
 	/** The user repository. */
