@@ -21,9 +21,9 @@
         
         <default-interceptor-ref name="authStack"></default-interceptor-ref> -->
         
-		<action name="index">
-			<result type="redirect">/login.html</result>
-		</action>
+	  <action name="index">
+			<result type="redirect">/home.html</result>
+	  </action>
 
 	  <action name="showAddStudent"
 			class="strutshelloworld.net.ren.struts2.actions.StudentAction"
@@ -74,36 +74,32 @@
 		<action name="*Book" method="{1}" class="strutshelloworld.net.ren.struts2.actions.BookAction">
 		      <result name="success">/WEB-INF/jsp/Book.jsp</result>
 		</action>
-		
-	<!-- 	<action name="login"
-			class="strutshelloworld.net.ren.struts2.actions.LoginAction">
+				
+		<action name="home"
+			class="strutshelloworld.net.ren.struts2.actions.UserAction">
 			<result name="success">/WEB-INF/jsp/Welcome.jsp</result>
-			<result name="error">/WEB-INF/jsp/Login.jsp</result>
-			<result name="input">/WEB-INF/jsp/Login.jsp</result>
-		</action> -->
-		
-		 <action name="home"
+	   </action> 
+	   
+       <action name="logIn"
 			class="strutshelloworld.net.ren.struts2.actions.UserAction" method="LogIn">
 			<result name="success">/WEB-INF/jsp/Welcome.jsp</result>
 			<result name="error">/WEB-INF/jsp/Login.jsp</result>
-			<result name="input">/WEB-INF/jsp/Login.jsp</result>
 	   </action> 
-       <action name="login"
-			class="strutshelloworld.net.ren.struts2.actions.UserAction" method="LogIn">
-			<result name="success">/WEB-INF/jsp/Welcome.jsp</result>
-			<result name="error">/WEB-INF/jsp/Login.jsp</result>
+	   
+	   <action name="showLogIn"
+			class="strutshelloworld.net.ren.struts2.actions.UserAction" method="showLogIn">
 			<result name="input">/WEB-INF/jsp/Login.jsp</result>
 	   </action> 
 	   
-	    <action name="showSignup"
-			class="strutshelloworld.net.ren.struts2.actions.UserAction" method="execute">
-			<result name="input">/WEB-INF/jsp/Login.jsp</result>
-	   </action>
+	   	   <action name="signUp"
+			class="strutshelloworld.net.ren.struts2.actions.UserAction" method="signUp">
+			<result name="success" type="redirect">showLogIn.html</result>
+			<result name="error" type="redirect">showLogIn.html</result>
+	   </action> 
 	   
-	    <action name="signup"
-			class="strutshelloworld.net.ren.struts2.actions.UserAction" method="SignUp">
-			<result name="success">/WEB-INF/jsp/Welcome.jsp</result>
-			<result name="error">/WEB-INF/jsp/Login.jsp</result>
+	   <action name="showSignUp"
+			class="strutshelloworld.net.ren.struts2.actions.UserAction" method="showSignUp">
+			<result name="success">/WEB-INF/jsp/Login.jsp</result>
 	   </action> 
 	   
 	</package>
