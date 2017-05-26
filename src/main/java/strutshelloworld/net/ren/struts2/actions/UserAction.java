@@ -20,11 +20,32 @@ public class UserAction extends ActionSupport implements ModelDriven, Preparable
 	private UserService userService;
 
 	/** The is log in. */
-	private boolean isLogIn = true;
+	private boolean isLogIn;
 	
 	/** The is sign up. */
-	private boolean isSignUp = false;
+	private boolean isSignUp;
 	
+	/** The is sign up success. */
+	private boolean isSignUpSuccess;
+	
+	/**
+	 * Checks if is sign up success.
+	 *
+	 * @return true, if is sign up success
+	 */
+	public boolean isSignUpSuccess() {
+		return isSignUpSuccess;
+	}
+
+	/**
+	 * Sets the sign up success.
+	 *
+	 * @param isSignUpSuccess the new sign up success
+	 */
+	public void setSignUpSuccess(boolean isSignUpSuccess) {
+		this.isSignUpSuccess = isSignUpSuccess;
+	}
+
 	/**
 	 * Checks if is sign up.
 	 *
@@ -92,6 +113,10 @@ public class UserAction extends ActionSupport implements ModelDriven, Preparable
 	 * @see com.opensymphony.xwork2.Preparable#prepare()
 	 */
 	public void prepare() throws Exception {
+		isSignUp = false;
+		isLogIn = false;
+		isSignUpSuccess = false;
+		signUpMessage = "Sign up failed";
 	}
 
 	/*
@@ -122,11 +147,11 @@ public class UserAction extends ActionSupport implements ModelDriven, Preparable
 		System.out.println("SignUp");
 		try {
 			userService.addUser(user);
-			isLogIn = true;
-	    	isSignUp = true;
 			signUpMessage = "Sign Up Success";
+			isSignUp = false;
+		   	isLogIn = true;
+		   	isSignUpSuccess = true;
 		} catch (Exception ex) {
-			isLogIn = false;
 			return ERROR;
 		}
 		return SUCCESS;
@@ -139,14 +164,15 @@ public class UserAction extends ActionSupport implements ModelDriven, Preparable
 	 */
 	public String showSignUp() {
 		System.out.println("showSignUp");
-		isLogIn = false;
+	   	isSignUp = true;
+	   	isLogIn = false;
 		return SUCCESS;
 	}
 
 	/**
 	 * Log in.
 	 *
-	 * @return the string
+	 * @return the string Pactera2017
 	 */
 	public String logIn() {
 		System.out.println("Login");
@@ -166,6 +192,7 @@ public class UserAction extends ActionSupport implements ModelDriven, Preparable
 	 */
 	public String showLogIn() {
 		System.out.println("ShowLogIn");
+		isLogIn = true;
 		return INPUT;
 	}
 

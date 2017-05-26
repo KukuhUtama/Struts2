@@ -9,8 +9,8 @@
 <body>
 <h2>Struts 2 - Login Application</h2>
 <s:actionerror />
-<s:if test="!isSignUp()">
-   <h2><s:property value="signUpMessage"/>In here</h2>
+<s:if test="isSignUpSuccess()">
+   <s:property value="signUpMessage"/>
 </s:if > 
 <s:form action="logIn">
 	<s:textfield name="username" key="label.username" size="20" />
@@ -23,7 +23,7 @@
         <s:submit key="label.login" align="center" />
     </s:else>
 </s:form>
-<s:if test="isLogIn()">
+<s:if test="!isSignUp()">
 <s:url var="signUpUrl" action="showSignUp"/>
 Does not have account yet? <s:a href="%{signUpUrl}">Click Sign Up</s:a>
 </s:if>

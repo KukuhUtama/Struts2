@@ -9,23 +9,21 @@
 <body>
 <h2>Struts 2 - Login Application</h2>
 <s:actionerror />
-<%-- <s:if test="isSignUp()">
-   <h2><s:property value="signUpMessage" />dddd</h2>
-</s:if > --%>
+<s:if test="isSignUpSuccess()">
+   <s:property value="signUpMessage"/>
+</s:if > 
 <s:form action="logIn">
 	<s:textfield name="username" key="label.username" size="20" />
 	<s:password name="password" key="label.password" size="20" />
 	
 	<s:if test="!isLogIn()">
 		<s:submit key="label.signup" align="center"  action="signUp"/>
-		  <s:reset theme="simple"/>
 	</s:if>
     <s:else>
         <s:submit key="label.login" align="center" />
-        <s:reset theme="simple" />
     </s:else>
 </s:form>
-<s:if test="isLogIn()">
+<s:if test="!isSignUp()">
 <s:url var="signUpUrl" action="showSignUp"/>
 Does not have account yet? <s:a href="%{signUpUrl}">Click Sign Up</s:a>
 </s:if>
