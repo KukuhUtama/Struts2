@@ -1,5 +1,9 @@
 package strutshelloworld.net.ren.struts2.actions;
 
+import java.util.Map;
+
+import org.apache.struts2.dispatcher.SessionMap;
+import org.apache.struts2.interceptor.SessionAware;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.opensymphony.xwork2.ActionSupport;
@@ -9,11 +13,10 @@ import com.opensymphony.xwork2.Preparable;
 import strutshelloworld.net.ren.struts2.domain.User;
 import strutshelloworld.net.ren.struts2.service.UserService;
 
-// TODO: Auto-generated Javadoc
 /**
  * The Class UserAction.
  */
-public class UserAction extends ActionSupport implements ModelDriven, Preparable {
+public class UserAction extends ActionSupport implements ModelDriven, Preparable, SessionAware{
 
 	/** The user service. */
 	@Autowired
@@ -24,27 +27,9 @@ public class UserAction extends ActionSupport implements ModelDriven, Preparable
 	
 	/** The is sign up. */
 	private boolean isSignUp;
-	
-	/** The is sign up success. */
-	private boolean isSignUpSuccess;
-	
-	/**
-	 * Checks if is sign up success.
-	 *
-	 * @return true, if is sign up success
-	 */
-	public boolean isSignUpSuccess() {
-		return isSignUpSuccess;
-	}
 
-	/**
-	 * Sets the sign up success.
-	 *
-	 * @param isSignUpSuccess the new sign up success
-	 */
-	public void setSignUpSuccess(boolean isSignUpSuccess) {
-		this.isSignUpSuccess = isSignUpSuccess;
-	}
+	/** The session map. */
+	private SessionMap sessionMap;
 
 	/**
 	 * Checks if is sign up.
@@ -62,27 +47,6 @@ public class UserAction extends ActionSupport implements ModelDriven, Preparable
 	 */
 	public void setSignUp(boolean isSignUp) {
 		this.isSignUp = isSignUp;
-	}
-
-	/** The sign up message. */
-	private String signUpMessage;
-
-	/**
-	 * Gets the sign up message.
-	 *
-	 * @return the sign up message
-	 */
-	public String getSignUpMessage() {
-		return signUpMessage;
-	}
-
-	/**
-	 * Sets the sign up message.
-	 *
-	 * @param signUpMessage the new sign up message
-	 */
-	public void setSignUpMessage(String signUpMessage) {
-		this.signUpMessage = signUpMessage;
 	}
 
 	/**
@@ -115,8 +79,6 @@ public class UserAction extends ActionSupport implements ModelDriven, Preparable
 	public void prepare() throws Exception {
 		isSignUp = false;
 		isLogIn = false;
-		isSignUpSuccess = false;
-		signUpMessage = "Sign up failed";
 	}
 
 	/*
@@ -147,10 +109,8 @@ public class UserAction extends ActionSupport implements ModelDriven, Preparable
 		System.out.println("SignUp");
 		try {
 			userService.addUser(user);
-			signUpMessage = "Sign Up Success";
 			isSignUp = false;
 		   	isLogIn = true;
-		   	isSignUpSuccess = true;
 		} catch (Exception ex) {
 			return ERROR;
 		}
@@ -177,7 +137,8 @@ public class UserAction extends ActionSupport implements ModelDriven, Preparable
 	public String logIn() {
 		System.out.println("Login");
 		User logInUser = userService.findUserByUsernameAndPassword(user.getUsername(), user.getPassword());
-		if (logInUser.getUsername() == null || logInUser.getPassword() == null) {
+		if ((logInUser.getUsername() != null || !"".equalsIgnoreCase(logInUser.getUsername())) &&(logInUser.getPassword() != null && !"".equalsIgnoreCase(logInUser.getPassword()))) {
+			sessionMap.put("user", logInUser);
 			return SUCCESS;
 		} else {
 			addActionError(getText("error.login"));
@@ -202,7 +163,16 @@ public class UserAction extends ActionSupport implements ModelDriven, Preparable
 	 * @return the string
 	 */
 	public String logOut() {
+		sessionMap.clear();
+		System.out.println("Log Out");
 		return SUCCESS;
+	}
+
+	/* (non-Javadoc)
+	 * @see org.apache.struts2.interceptor.SessionAware#setSession(java.util.Map)
+	 */
+	public void setSession(Map<String, Object> map) {	
+		this.sessionMap = (SessionMap) map;
 	}
 
 }

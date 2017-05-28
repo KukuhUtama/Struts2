@@ -9,9 +9,7 @@
 <body>
 <h2>Struts 2 - Login Application</h2>
 <s:actionerror />
-<s:if test="isSignUpSuccess()">
-   <s:property value="signUpMessage"/>
-</s:if > 
+<s:property value="signUpMessage"/>
 <s:form action="logIn">
 	<s:textfield name="username" key="label.username" size="20" />
 	<s:password name="password" key="label.password" size="20" />

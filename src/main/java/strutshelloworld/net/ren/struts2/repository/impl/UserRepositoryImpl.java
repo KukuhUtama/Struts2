@@ -55,7 +55,7 @@ public class UserRepositoryImpl extends AbstractBaseRepository<User> implements 
 	 * @see strutshelloworld.net.ren.struts2.repository.UserRepository#findUserByUsernameAndPassword(java.lang.String, java.lang.String)
 	 */
 	public User findUserByUsernameAndPassword(String username, String password) {
-		hql = "from User where username="+username+" and password="+password+"";
+		hql = "from User where username='"+username+"' and password='"+password+"'";
 		Query query = getCurrentSession().createQuery(hql);
 		return (User) query.getSingleResult();
 	}

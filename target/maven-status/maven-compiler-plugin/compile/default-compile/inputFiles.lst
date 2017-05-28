@@ -1,6 +1,8 @@
+E:\Java\Workspace\Struts2\Struts2\src\main\java\strutshelloworld\net\ren\struts2\interceptors\AuthInterceptor.java
 E:\Java\Workspace\Struts2\Struts2\src\main\java\strutshelloworld\net\ren\struts2\actions\StudentAction.java
 E:\Java\Workspace\Struts2\Struts2\src\main\java\strutshelloworld\net\ren\struts2\service\impl\StudentServiceImpl.java
 E:\Java\Workspace\Struts2\Struts2\src\main\java\strutshelloworld\net\ren\struts2\actions\LoginAction.java
+E:\Java\Workspace\Struts2\Struts2\src\main\java\strutshelloworld\net\ren\struts2\interceptors\LogInterceptor.java
 E:\Java\Workspace\Struts2\Struts2\src\main\java\strutshelloworld\net\ren\struts2\repository\impl\StudentRepositoryImpl.java
 E:\Java\Workspace\Struts2\Struts2\src\main\java\strutshelloworld\net\ren\struts2\service\impl\UserServiceImpl.java
 E:\Java\Workspace\Struts2\Struts2\src\main\java\strutshelloworld\net\ren\struts2\actions\BookAction.java

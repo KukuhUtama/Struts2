@@ -7,25 +7,36 @@
 	<constant name="struts.devMode" value="false" />
 	<constant name="struts.custom.i18n.resources" value="app-resources" />
 	<constant name="struts.action.extension" value="html" />
-    <constant name="struts.mapper.action.prefix.enabled" value="true"/>
- 
-	<package name="default" namespace="/"  strict-method-invocation="false" extends="struts-default">
- <!--        <interceptors>
-               <interceptor name="authentication" class="">
-               </interceptor>
-               <interceptor-stack name="authStack">
-                     <interceptor-ref name="authentication"/>
-                     <interceptor-ref name="defaultStack"/>
-               </interceptor-stack>
-        </interceptors>
-        
-        <default-interceptor-ref name="authStack"></default-interceptor-ref> -->
-        
-	  <action name="index">
-			<result type="redirect">/home.html</result>
-	  </action>
+	<constant name="struts.mapper.action.prefix.enabled" value="true" />
 
-	  <action name="showAddStudent"
+	<package name="default" namespace="/" strict-method-invocation="false"
+		extends="struts-default">
+		<interceptors>
+			<interceptor name="authentication"
+				class="strutshelloworld.net.ren.struts2.interceptors.AuthInterceptor">
+			</interceptor>
+
+			<interceptor name="logging"
+				class="strutshelloworld.net.ren.struts2.interceptors.LogInterceptor">
+			</interceptor>
+
+			<interceptor-stack name="authStack">
+				<interceptor-ref name="authentication" />
+				<interceptor-ref name="defaultStack" />
+			</interceptor-stack>
+		</interceptors>
+
+		<!-- <default-interceptor-ref name="authStack"></default-interceptor-ref> -->
+		<global-results>
+			<result name="login" type="redirect">/showLogIn.html</result>
+		</global-results>
+		
+		<action name="index">
+			<interceptor-ref name="authStack"></interceptor-ref>
+			<result type="redirect">/home.html</result>
+		</action>
+
+		<action name="showAddStudent"
 			class="strutshelloworld.net.ren.struts2.actions.StudentAction"
 			method="execute">
 			<result name="success">/WEB-INF/jsp/AddStudent.jsp</result>
@@ -36,72 +47,81 @@
 			method="addStudent">
 			<result name="success" type="redirect">listStudent.html</result>
 		</action>
-		
+
 		<action name="updateStudent"
 			class="strutshelloworld.net.ren.struts2.actions.StudentAction"
 			method="updateStudent">
 			<result name="success" type="redirect">listStudent.html</result>
 		</action>
-		
+
 		<action name="deleteStudent"
 			class="strutshelloworld.net.ren.struts2.actions.StudentAction"
 			method="deleteStudent">
 			<result name="success" type="redirect">listStudent.html</result>
-		</action> 
-        
-        <action name="deleteAll" 
-              class="strutshelloworld.net.ren.struts2.actions.StudentAction" 
-              method="deleteAll">
-              <result name="success" type="redirect">listStudent.html</result>
-        </action>
-	
-		<action name="getStudentById" 
-		    class="strutshelloworld.net.ren.struts2.actions.StudentAction" 
-		    method="getStudentById">
-				<result name="success">/WEB-INF/jsp/AddStudent.jsp</result>
-		</action> 
-		  
-	   <action name="listStudent"
+		</action>
+
+		<action name="deleteAll"
+			class="strutshelloworld.net.ren.struts2.actions.StudentAction"
+			method="deleteAll">
+			<result name="success" type="redirect">listStudent.html</result>
+		</action>
+
+		<action name="getStudentById"
+			class="strutshelloworld.net.ren.struts2.actions.StudentAction"
+			method="getStudentById">
+			<result name="success">/WEB-INF/jsp/AddStudent.jsp</result>
+		</action>
+
+		<action name="listStudent"
 			class="strutshelloworld.net.ren.struts2.actions.StudentAction"
 			method="getAllStudent">
 			<result name="success">/WEB-INF/jsp/ListStudent.jsp</result>
 		</action>
-		
-		<action name="listBook" class="strutshelloworld.net.ren.struts2.actions.BookAction" method="execute">
-		      <result name="success">/WEB-INF/jsp/ListBook.jsp</result>
+
+		<action name="listBook"
+			class="strutshelloworld.net.ren.struts2.actions.BookAction" method="execute">
+			<result name="success">/WEB-INF/jsp/ListBook.jsp</result>
 		</action>
-		
-		<action name="*Book" method="{1}" class="strutshelloworld.net.ren.struts2.actions.BookAction">
-		      <result name="success">/WEB-INF/jsp/Book.jsp</result>
+
+		<action name="*Book" method="{1}"
+			class="strutshelloworld.net.ren.struts2.actions.BookAction">
+			<result name="success">/WEB-INF/jsp/Book.jsp</result>
 		</action>
-				
+
 		<action name="home"
 			class="strutshelloworld.net.ren.struts2.actions.UserAction">
+			<interceptor-ref name="authStack"></interceptor-ref>
 			<result name="success">/WEB-INF/jsp/Welcome.jsp</result>
-	   </action> 
-	   
-       <action name="logIn"
-			class="strutshelloworld.net.ren.struts2.actions.UserAction" method="LogIn">
+		</action>
+
+		<action name="logIn"
+			class="strutshelloworld.net.ren.struts2.actions.UserAction" method="logIn">
 			<result name="success">/WEB-INF/jsp/Welcome.jsp</result>
 			<result name="error">/WEB-INF/jsp/Login.jsp</result>
-	   </action> 
-	   
-	   <action name="showLogIn"
+		</action>
+
+		<action name="showLogIn"
 			class="strutshelloworld.net.ren.struts2.actions.UserAction" method="showLogIn">
+			<interceptor-ref name="authStack"></interceptor-ref>
 			<result name="input">/WEB-INF/jsp/Login.jsp</result>
-	   </action> 
-	   
-	   	   <action name="signUp"
+		</action>
+
+		<action name="signUp"
 			class="strutshelloworld.net.ren.struts2.actions.UserAction" method="signUp">
 			<result name="success" type="redirect">showLogIn.html</result>
 			<result name="error" type="redirect">showLogIn.html</result>
-	   </action> 
-	   
-	   <action name="showSignUp"
+		</action>
+
+		<action name="showSignUp"
 			class="strutshelloworld.net.ren.struts2.actions.UserAction" method="showSignUp">
 			<result name="success">/WEB-INF/jsp/Login.jsp</result>
-	   </action> 
-	   
+		</action>
+
+		<action name="logOut"
+			class="strutshelloworld.net.ren.struts2.actions.UserAction" method="logOut">
+			<result name="success" type="redirect">showLogIn.html</result>
+		</action>
+
 	</package>
 
 </struts>
