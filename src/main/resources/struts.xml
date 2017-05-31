@@ -22,11 +22,12 @@
 
 			<interceptor-stack name="authStack">
 				<interceptor-ref name="authentication" />
+				<interceptor-ref name="logging" />
 				<interceptor-ref name="defaultStack" />
 			</interceptor-stack>
 		</interceptors>
-
-		<!-- <default-interceptor-ref name="authStack"></default-interceptor-ref> -->
+		<default-interceptor-ref name="defaultStack"></default-interceptor-ref> 
+		
 		<global-results>
 			<result name="login" type="redirect">/showLogIn.html</result>
 		</global-results>
@@ -39,52 +40,61 @@
 		<action name="showAddStudent"
 			class="strutshelloworld.net.ren.struts2.actions.StudentAction"
 			method="execute">
+			<interceptor-ref name="authStack"></interceptor-ref>
 			<result name="success">/WEB-INF/jsp/AddStudent.jsp</result>
 		</action>
 
 		<action name="addStudent"
 			class="strutshelloworld.net.ren.struts2.actions.StudentAction"
 			method="addStudent">
+			<interceptor-ref name="authStack"></interceptor-ref>
 			<result name="success" type="redirect">listStudent.html</result>
 		</action>
 
 		<action name="updateStudent"
 			class="strutshelloworld.net.ren.struts2.actions.StudentAction"
 			method="updateStudent">
+			<interceptor-ref name="authStack"></interceptor-ref>
 			<result name="success" type="redirect">listStudent.html</result>
 		</action>
 
 		<action name="deleteStudent"
 			class="strutshelloworld.net.ren.struts2.actions.StudentAction"
 			method="deleteStudent">
+			<interceptor-ref name="authStack"></interceptor-ref>
 			<result name="success" type="redirect">listStudent.html</result>
 		</action>
 
 		<action name="deleteAll"
 			class="strutshelloworld.net.ren.struts2.actions.StudentAction"
 			method="deleteAll">
+			<interceptor-ref name="authStack"></interceptor-ref>
 			<result name="success" type="redirect">listStudent.html</result>
 		</action>
 
 		<action name="getStudentById"
 			class="strutshelloworld.net.ren.struts2.actions.StudentAction"
 			method="getStudentById">
+			<interceptor-ref name="authStack"></interceptor-ref>
 			<result name="success">/WEB-INF/jsp/AddStudent.jsp</result>
 		</action>
 
 		<action name="listStudent"
 			class="strutshelloworld.net.ren.struts2.actions.StudentAction"
 			method="getAllStudent">
+			<interceptor-ref name="authStack"></interceptor-ref>
 			<result name="success">/WEB-INF/jsp/ListStudent.jsp</result>
 		</action>
 
 		<action name="listBook"
 			class="strutshelloworld.net.ren.struts2.actions.BookAction" method="execute">
+			<interceptor-ref name="authStack"></interceptor-ref>
 			<result name="success">/WEB-INF/jsp/ListBook.jsp</result>
 		</action>
 
 		<action name="*Book" method="{1}"
 			class="strutshelloworld.net.ren.struts2.actions.BookAction">
+			<interceptor-ref name="authStack"></interceptor-ref>
 			<result name="success">/WEB-INF/jsp/Book.jsp</result>
 		</action>
 
@@ -102,7 +112,6 @@
 
 		<action name="showLogIn"
 			class="strutshelloworld.net.ren.struts2.actions.UserAction" method="showLogIn">
-			<interceptor-ref name="authStack"></interceptor-ref>
 			<result name="input">/WEB-INF/jsp/Login.jsp</result>
 		</action>
 

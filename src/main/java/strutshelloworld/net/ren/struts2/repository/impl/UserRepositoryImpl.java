@@ -26,6 +26,9 @@ public class UserRepositoryImpl extends AbstractBaseRepository<User> implements 
 
 	/** The hql. */
 	private String hql;
+	
+	/** The is exist. */
+	private boolean isExist = false;
 
 
 	/**
@@ -67,6 +70,18 @@ public class UserRepositoryImpl extends AbstractBaseRepository<User> implements 
 		hql = "delete User where username = :username and password= :password";
 		Query q = getCurrentSession().createQuery(hql).setParameter("username", username).setParameter("password", password);
 		q.executeUpdate();
+	}
+
+	/* (non-Javadoc)
+	 * @see strutshelloworld.net.ren.struts2.repository.UserRepository#isUsernameExist(java.lang.String)
+	 */
+	public boolean isUsernameExist(String username) {
+		hql = "from User where username='"+username+"'";
+		Query query = getCurrentSession().createQuery(hql);
+		if(query.getResultList().size()>0){
+			isExist = true;
+		}
+		return isExist;
 	}
 
 }
