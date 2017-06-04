@@ -31,4 +31,12 @@ public interface UserService {
 	 * @param password the password
 	 */
 	public void deleteUserByUsernameAndPassword(String username, String password);
+	
+	/**
+	 * Checks if is username exist.
+	 *
+	 * @param username the username
+	 * @return true, if is username exist
+	 */
+	public boolean isUsernameExist(String username);
 }

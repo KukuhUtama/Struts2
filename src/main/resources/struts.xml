@@ -6,9 +6,23 @@
 	<constant name="struts.enable.DynamicMethodInvocation" value="true" />
 	<constant name="struts.devMode" value="false" />
 	<constant name="struts.custom.i18n.resources" value="app-resources" />
-	<constant name="struts.action.extension" value="html" />
 	<constant name="struts.mapper.action.prefix.enabled" value="true" />
-
+	<constant name="struts.mapper.class" value="org.apache.struts2.dispatcher.mapper.PrefixBasedActionMapper" />
+	
+	<constant name="struts.convention.action.suffix" value="RestAction"/>
+    <constant name="struts.convention.action.mapAllMatches" value="true"/>
+    <constant name="struts.convention.default.parent.package" value="rest-default"/>
+    <constant name="struts.convention.package.locators" value="restactions"/>
+    <constant name="struts.mapper.prefixMapping" value="/api:rest,:struts"/>
+    <constant name="struts.rest.namespace" value="/api" />
+    <constant name="struts.action.extension" value="xhtml,html,xml,json,action" />
+    
+    <package name="api" namespace="/api" extends="rest-default">
+			<action name="user/*" class="strutshelloworld.net.ren.struts2.restactions.UserRestAction">
+				<param name="username">{1}</param>
+			</action>
+     </package>
+		
 	<package name="default" namespace="/" strict-method-invocation="false"
 		extends="struts-default">
 		<interceptors>

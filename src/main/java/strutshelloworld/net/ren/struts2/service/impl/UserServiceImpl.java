@@ -42,4 +42,11 @@ public class UserServiceImpl implements UserService {
 	    userRepository.deleteUserByUsernameAndPassword(username, password);
 	}
 
+	/* (non-Javadoc)
+	 * @see strutshelloworld.net.ren.struts2.service.UserService#isUsernameExist(java.lang.String)
+	 */
+	public boolean isUsernameExist(String username) {
+		return userRepository.isUsernameExist(username);
+	}
+
 }

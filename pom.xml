@@ -22,6 +22,8 @@
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<spring.web.version>4.3.7.RELEASE</spring.web.version>
 		<common.logging.version>1.1.1</common.logging.version>
+		<struts2.rest.plugin>2.5.2</struts2.rest.plugin>
+		<struts2.convention.plugin>2.5.2</struts2.convention.plugin>
 	</properties>
 
 	<dependencies>
@@ -49,6 +51,20 @@
 			<groupId>org.apache.struts</groupId>
 			<artifactId>struts2-spring-plugin</artifactId>
 			<version>${struts2.spring.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.apache.struts</groupId>
+			<artifactId>struts2-rest-plugin</artifactId>
+			<version>${struts2.rest.plugin}</version>
+		</dependency>
+		
+	
+
+		<dependency>
+			<groupId>org.apache.struts</groupId>
+			<artifactId>struts2-convention-plugin</artifactId>
+			<version>${struts2.convention.plugin}</version>
 		</dependency>
 
 		<dependency>

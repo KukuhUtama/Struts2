@@ -5,6 +5,7 @@ E:\Java\Workspace\Struts2\Struts2\src\main\java\strutshelloworld\net\ren\struts2
 E:\Java\Workspace\Struts2\Struts2\src\main\java\strutshelloworld\net\ren\struts2\interceptors\LogInterceptor.java
 E:\Java\Workspace\Struts2\Struts2\src\main\java\strutshelloworld\net\ren\struts2\repository\impl\StudentRepositoryImpl.java
 E:\Java\Workspace\Struts2\Struts2\src\main\java\strutshelloworld\net\ren\struts2\service\impl\UserServiceImpl.java
+E:\Java\Workspace\Struts2\Struts2\src\main\java\strutshelloworld\net\ren\struts2\restactions\UserRestAction.java
 E:\Java\Workspace\Struts2\Struts2\src\main\java\strutshelloworld\net\ren\struts2\actions\BookAction.java
 E:\Java\Workspace\Struts2\Struts2\src\main\java\strutshelloworld\net\ren\struts2\domain\Student.java
 E:\Java\Workspace\Struts2\Struts2\src\main\java\strutshelloworld\net\ren\struts2\service\UserService.java
