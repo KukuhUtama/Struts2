@@ -24,6 +24,7 @@
 		<common.logging.version>1.1.1</common.logging.version>
 		<struts2.rest.plugin>2.5.2</struts2.rest.plugin>
 		<struts2.convention.plugin>2.5.2</struts2.convention.plugin>
+		<gson.version>2.7</gson.version>
 	</properties>
 
 	<dependencies>
@@ -58,15 +59,12 @@
 			<artifactId>struts2-rest-plugin</artifactId>
 			<version>${struts2.rest.plugin}</version>
 		</dependency>
-		
-	
 
-		<dependency>
+	 	<dependency>
 			<groupId>org.apache.struts</groupId>
 			<artifactId>struts2-convention-plugin</artifactId>
 			<version>${struts2.convention.plugin}</version>
-		</dependency>
-
+		</dependency> 
 		<dependency>
 			<groupId>org.apache.logging.log4j</groupId>
 			<artifactId>log4j-core</artifactId>
@@ -104,6 +102,13 @@
 			<groupId>javax.transaction</groupId>
 			<artifactId>javax.transaction-api</artifactId>
 			<version>1.2</version>
+		</dependency>
+		
+		<!-- gson -->
+		<dependency>
+			<groupId>com.google.code.gson</groupId>
+			<artifactId>gson</artifactId>
+			<version>${gson.version}</version>
 		</dependency>
 
 		<!-- hibernate -->

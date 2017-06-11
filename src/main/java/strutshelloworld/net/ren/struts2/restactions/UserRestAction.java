@@ -1,63 +1,42 @@
 package strutshelloworld.net.ren.struts2.restactions;
 
+import java.io.IOException;
+
+import javax.servlet.http.HttpServletResponse;
+import org.apache.struts2.ServletActionContext;
 import org.apache.struts2.rest.DefaultHttpHeaders;
 import org.apache.struts2.rest.HttpHeaders;
 import org.springframework.beans.factory.annotation.Autowired;
-
-import com.opensymphony.xwork2.ActionSupport;
-import com.opensymphony.xwork2.ModelDriven;
-
-import strutshelloworld.net.ren.struts2.domain.User;
+import com.google.gson.Gson;
 import strutshelloworld.net.ren.struts2.service.UserService;
 
-// TODO: Auto-generated Javadoc
 /**
  * The Class UserRestAction.
  */
-public class UserRestAction extends ActionSupport implements ModelDriven{
-	/** The user. */
-	private User user = new User();
-	
-	/** The username. */
-	private String username;
-	
-	/**
-	 * Gets the username.
-	 *
-	 * @return the username
-	 */
-	public String getUsername() {
-		return username;
-	}
+public class UserRestAction{
 
-	/**
-	 * Sets the username.
-	 *
-	 * @param username the new username
-	 */
-	public void setUsername(String username) {
-		this.username = username;
-	}
-
+	private Gson gson = new Gson();
 	/** The user service. */
 	@Autowired
 	private UserService userService;
-	
-	/* (non-Javadoc)
-	 * @see com.opensymphony.xwork2.ModelDriven#getModel()
-	 */
-	public Object getModel() {
-		return user;
-	}
-	
+
 	/**
 	 * Show.
 	 *
 	 * @return true, if successful
 	 */
-	public boolean show(){
+	public String show(){
+		HttpServletResponse response = ServletActionContext.getResponse();
 		System.out.println("--------show-----");
-		return userService.isUsernameExist(username);
+		String jsonString = gson.toJson(userService.isUsernameExist("hello"));
+		response.setContentType("text/json");
+		try {
+			response.setCharacterEncoding("UTF-8");
+			response.getOutputStream().print(jsonString.toString());
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		return null;
 	}
 	
 	public HttpHeaders index() {
