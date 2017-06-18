@@ -96,7 +96,6 @@ public class UserAction extends ActionSupport implements ModelDriven, Preparable
 	 * @see com.opensymphony.xwork2.ActionSupport#execute()
 	 */
 	public String execute() throws Exception {
-		System.out.println("execute");
 		return SUCCESS;
 	}
 
@@ -123,7 +122,6 @@ public class UserAction extends ActionSupport implements ModelDriven, Preparable
 	 * @return the string
 	 */
 	public String showSignUp() {
-		System.out.println("showSignUp");
 	   	isSignUp = true;
 	   	isLogIn = false;
 		return SUCCESS;
@@ -135,7 +133,6 @@ public class UserAction extends ActionSupport implements ModelDriven, Preparable
 	 * @return the string Pactera2017
 	 */
 	public String logIn() {
-		System.out.println("Login");
 		User logInUser = userService.findUserByUsernameAndPassword(user.getUsername(), user.getPassword());
 		if ((logInUser.getUsername() != null || !"".equalsIgnoreCase(logInUser.getUsername())) &&(logInUser.getPassword() != null && !"".equalsIgnoreCase(logInUser.getPassword()))) {
 			sessionMap.put("user", logInUser);
@@ -152,7 +149,6 @@ public class UserAction extends ActionSupport implements ModelDriven, Preparable
 	 * @return the string
 	 */
 	public String showLogIn() {
-		System.out.println("ShowLogIn");
 		isLogIn = true;
 		return INPUT;
 	}
@@ -164,7 +160,6 @@ public class UserAction extends ActionSupport implements ModelDriven, Preparable
 	 */
 	public String logOut() {
 		sessionMap.clear();
-		System.out.println("Log Out");
 		return SUCCESS;
 	}
 

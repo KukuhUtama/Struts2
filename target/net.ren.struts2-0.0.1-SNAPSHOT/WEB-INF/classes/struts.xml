@@ -8,10 +8,11 @@
 	<constant name="struts.devMode" value="false" />
 	<constant name="struts.custom.i18n.resources" value="app-resources" />
 	<constant name="struts.mapper.action.prefix.enabled" value="true" />
-	<constant name="struts.mapper.class" value="org.apache.struts2.dispatcher.mapper.PrefixBasedActionMapper" />
     <constant name="struts.action.extension" value="html" />
 	
-<!-- 	<constant name="struts.convention.action.suffix" value="RestAction"/>
+    <!-- 
+    <constant name="struts.mapper.class" value="org.apache.struts2.dispatcher.mapper.PrefixBasedActionMapper" />
+    <constant name="struts.convention.action.suffix" value="RestAction"/>
     <constant name="struts.convention.action.mapAllMatches" value="true"/>
     <constant name="struts.convention.default.parent.package" value="rest-default"/>
     <constant name="struts.convention.package.locators" value="restactions"/>

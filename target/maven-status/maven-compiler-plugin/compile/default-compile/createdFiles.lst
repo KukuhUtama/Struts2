@@ -14,6 +14,5 @@ strutshelloworld\net\ren\struts2\interceptors\AuthInterceptor.class
 strutshelloworld\net\ren\struts2\repository\StudentRepository.class
 strutshelloworld\net\ren\struts2\service\StudentService.class
 strutshelloworld\net\ren\struts2\interceptors\LogInterceptor.class
-strutshelloworld\net\ren\struts2\restactions\UserRestAction.class
 strutshelloworld\net\ren\struts2\actions\UserAction.class
 strutshelloworld\net\ren\struts2\repository\UserRepository.class
